@@ -10,10 +10,10 @@
                             <form action="" method="post">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <input class="form-control" name="nama_customer" type="text" placeholder="Kode Jual" value=""  aria-describedby="basic-addon2" />
+                                            <input class="form-control" name="nama_customer" type="text" placeholder="Nama Pembeli" value=""  aria-describedby="basic-addon2" />
                                         </div>
                                         <div class="col-md-3">
-                                            <input class="form-control" readonly name="tanggal_beli" type="text" placeholder="Tanggal Hari Ini"  aria-describedby="basic-addon2" />
+                                            <input class="form-control" readonly name="tanggal_beli" value="<?= mdate('%Y-%m-%d %h:%i:%s')?>" type="text" placeholder="Tanggal Hari Ini"  aria-describedby="basic-addon2" />
                                         </div>
                                         <div class="col-md-3">
                                             <input class="form-control" readonly name="kode_penjualan" type="text" placeholder="Nomor Nota"  aria-describedby="basic-addon2" />
