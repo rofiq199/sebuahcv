@@ -1,0 +1,20 @@
+.kop, .identitas{
+    border-style: solid;
+}
+
+.identitas{
+    border-top: 0px;
+}
+
+thead{
+    border-color: black;
+}
+
+img{
+    max-width: 3.81cm;
+    max-height: 5.59cm;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-style:'Roboto', sans-serif;
+}
