@@ -24,10 +24,16 @@ class Kasir extends CI_Controller
     {
         $kode = $this->input->post('kode_penjualan');
         $nama = $this->input->post('nama_customer');
+        $alamat = $this->input->post('alamat');
+        $bayar = $this->input->post('bayar');
+        $kembali = $this->input->post('kembali');
         $data = [
             'kode_penjualan' => $kode,
             'nama_customer' => $nama,
-            'total' => $this->cart->total()
+            'alamat' => $alamat,
+            'total' => $this->cart->total(),
+            'bayar' => $bayar,
+            'kembali' => $kembali
         ];
         $this->M_user->insertdata('penjualan', $data);
         foreach ($this->cart->contents() as $a) {
@@ -39,12 +45,7 @@ class Kasir extends CI_Controller
             $this->M_user->insertdata('detail_penjualan', $detail_penjualan);
         }
         $this->cart->destroy();
-        redirect(base_url('History'));
-    }
-    function produk()
-    {
-        $data = $this->M_user->getdata('produk');
-        echo json_encode($data);
+        redirect(base_url('Nota/cetak/' . $kode));
     }
     function getbarang()
     {
@@ -134,5 +135,12 @@ class Kasir extends CI_Controller
     {
         $rowid = $this->input->post('rowid');
         $this->cart->remove($rowid);
+        $show = $this->cart->contents();
+        echo json_encode($show);
+    }
+    function total()
+    {
+        $data = ['jumlah' => $this->cart->total()];
+        echo $this->cart->total();
     }
 }

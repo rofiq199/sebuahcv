@@ -44,7 +44,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                    <button type="submit" class="btn btn-danger" id="submit">Hapus</button>
+                                                    <button type="submit" class="btn btn-danger" id="hapus">Hapus</button>
                                                 </div>
                                                 </form>
                                             </div>
@@ -96,6 +96,7 @@
 
     <script>
         $(document).ready(function() {
+            $('#dataTable').DataTable();
             $('#tambah').click(function() {
                 $('form').attr('action', '<?= base_url('Barang/add') ?>');
                 $('#modal-title').empty();

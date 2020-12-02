@@ -19,7 +19,7 @@
                                 <input class="form-control" readonly name="kode_penjualan" type="text" placeholder="Nomor Nota" value="<?= $kode; ?>" aria-describedby="basic-addon2" />
                             </div>
                             <div class="col-md-3">
-                                <input class="form-control" name="alamat_pengiriman" type="text" placeholder="Alamat" aria-describedby="basic-addon2" />
+                                <input class="form-control" name="alamat" required type="text" placeholder="Alamat" aria-describedby="basic-addon2" />
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -64,26 +64,24 @@
                                     </tr>
                                 </thead>
                                 <tbody id="cart">
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
                                 </tbody>
                             </table>
-                            <button type="submit" class="btn btn-primary">Cetak</button>
                         </div>
+                        <div class="float-right">
+                            <div class="col-12 pt-2 pr-2">
+                                <input type="text" class="form-control" required name="total" id="total" readonly placeholder="Total">
+                            </div>
+                            <div class="col-12 pt-2 pr-2">
+                                <input type="text" class="form-control" required name="bayar" id="bayar" placeholder="Bayar">
+                            </div>
+                            <div class="col-12 pt-2 pr-2">
+                                <input type="text" class="form-control" required name="kembali" id="kembali" readonly placeholder="Kembali">
+                            </div>
+                            <div class="col-12 pt-2 pr-2">
+                                <button type="submit" class="form-control btn btn-primary">Cetak</button>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -127,7 +125,15 @@
                     },
                     success: function(data) {
                         console.log(data);
+                        $("#kode_barang").val("");
+                        $("#nama_barang").val("");
+                        $("#harga").val("");
+                        $("#qty").val("");
                         $('#cart').load("<?= base_url('Kasir/load_cart'); ?>");
+                        $.get("<?= base_url('Kasir/total'); ?>", function(data) {
+                            $('#total').val(data);
+                        });
+
                     },
                 });
             });
@@ -143,28 +149,16 @@
                     },
                     success: function(data) {
                         console.log(data);
+                        `x`
                     },
                 });
                 $('#cart').load("<?= base_url('Kasir/load_cart'); ?>");
             });
-            // $.get({
-            //     url: "<?= base_url('Kasir/produk') ?>",
-            //     data: {
-
-            //     },
-            //     success: function(data) {
-            //         console.log(data);
-            //         var results = data;
-            //         for (i = 0; i < results.length; i++) {
-            //             $("#produk").append($('<option>', {
-            //                 value: results[i]["nama"],
-            //                 text: results[i]["kode_produk"]
-            //             }));
-            //         }
-
-
-            //     }
-            // })
-
+            $("#bayar").keyup(function() {
+                var total = $('#total').val();
+                var bayar = $(this).val();
+                var kembali = parseInt(bayar) - parseInt(total);
+                $("#kembali").val(kembali);
+            });
         });
     </script>

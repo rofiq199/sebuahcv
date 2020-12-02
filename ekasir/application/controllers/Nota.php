@@ -2,16 +2,19 @@
 
 class Nota extends CI_Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
+        $this->load->model('M_user');
+        $this->load->library('cart');
     }
-
-    function index(){
-        $this->load->view('nota');
+    public function index()
+    {
+    }
+    function cetak($id)
+    {
+        $data['penjualan'] = $this->M_user->getwhere('penjualan', ['kode_penjualan' => $id]);
+        $data['detail'] = $this->M_user->getjoinfilter('detail_penjualan', 'barang', 'detail_penjualan.kode_barang=barang.kode_barang', ['kode_penjualan' => $id]);
+        $this->load->view('nota', $data);
     }
 }
-
-
-
-
-?>

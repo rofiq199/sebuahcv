@@ -4,15 +4,12 @@
             <div class="card mb-4">
                 <div class="card-header">
                     Rekap Penjualan
-                    <div class="float-right">
-                        <button type="button" id="tambah" class="btn btn-primary">Tambah Barang</button>
-                    </div>
                 </div>
                 <div class="card-body">
-                <input class="form-control mb-3" placeholder="Bulan" list="namaBulan" id="nama_bulan" name="nama_barang">
-                                <datalist id="namaBulan">
-                                        <option value="Bulan"></option>
-                                </datalist>
+                    <input class="form-control mb-3" placeholder="Bulan" list="namaBulan" id="nama_bulan" name="nama_barang">
+                    <datalist id="namaBulan">
+                        <option value="Bulan"></option>
+                    </datalist>
                     <div class="table-responsive">
                         <table class="table table-bordered" width="100%" cellspacing="0">
                             <thead>
@@ -28,34 +25,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-body">
-                                                    <h5>Apakah Anda Yakin akan Menghapus Data ini?</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    </button>
-                                                    <form action="<?= base_url('Barang/delete') ?>" method="post">
-                                                        <input type="hidden" name="kode" value="<?= $a->kode_barang; ?>">
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                    <button type="submit" class="btn btn-danger" id="submit">Hapus</button>
-                                                </div>
-                                                </form>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <h5>Apakah Anda Yakin akan Menghapus Data ini?</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                </button>
+                                                <form action="<?= base_url('Barang/delete') ?>" method="post">
+                                                    <input type="hidden" name="kode" value="<?= $a->kode_barang; ?>">
                                             </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-danger" id="submit">Hapus</button>
+                                            </div>
+                                            </form>
                                         </div>
                                     </div>
+                                </div>
                             </tbody>
                         </table>
                     </div>
