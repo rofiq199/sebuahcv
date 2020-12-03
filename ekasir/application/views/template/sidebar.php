@@ -38,21 +38,20 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Barang
                     </a>
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="./laporan">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Transaksi
+                        Laporan Transaksi
                     </a>
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#laporan" aria-expanded="false" aria-controls="collapseLayouts">
+                    <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#laporan" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Laporan
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="laporan" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">Barang</a>
                             <a class="nav-link" href="layout-sidenav-light.html">Transaksi</a>
                         </nav>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="sb-sidenav-footer">
