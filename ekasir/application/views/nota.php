@@ -19,7 +19,7 @@
             <div class="col-12">
                 <div class="row">
                     <div class="col-md-2 col-lg-2">
-                        <img src="https://blog.hubspot.com/hubfs/image8-2.jpg" alt="">
+                        <img src="<?= base_url('assets/image/logo toko.jpg')?>" alt="">
                     </div>
                     <div class="col-md-8 col-lg-8">
                         <h1>ENAM BELAS JAYA FURNITURE</h1>
