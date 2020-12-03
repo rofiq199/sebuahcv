@@ -6,6 +6,7 @@ class Barang extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_user');
+        $this->load->model('M_barang');
     }
 
 
@@ -22,6 +23,33 @@ class Barang extends CI_Controller
         $id = $this->input->get('id');
         $data = $this->M_user->getwhere('barang', ['kode_barang' => $id]);
         echo json_encode($data);
+    }
+    function showbarang()
+    {
+        $list = $this->M_barang->get_datatables();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $field) {
+            $no++;
+            $row = array();
+            $row[] = $no;
+            $row[] = $field->nama_barang;
+            $row[] = $field->stok;
+            $row[] = 'Rp. ' . number_format($field->harga, 0, ',', '.');
+            $row[] = '<a href="javascript:;" role="button" id="edit" data-id="' . $field->kode_barang . '"><i class="fas fa-edit"></i></a>
+            <a href="javascript:;" role="button" id="hapus" data-id="' . $field->kode_barang . '"><i class="fas fa-trash-alt"></i></a>';
+
+            $data[] = $row;
+        }
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->M_barang->count_all(),
+            "recordsFiltered" => $this->M_barang->count_filtered(),
+            "data" => $data,
+        );
+        //output dalam format JSON
+        echo json_encode($output);
     }
     function add()
     {
@@ -56,5 +84,6 @@ class Barang extends CI_Controller
     {
         $kode = $this->input->post('kode');
         $this->M_user->delete('barang', ['kode_barang' => $kode]);
+        redirect(base_url('Barang'));
     }
 }
