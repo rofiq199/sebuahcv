@@ -33,6 +33,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
                         Kasir
                     </a>
+                    <a class="nav-link" href="./StockIn">
+                        <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
+                        Stock In
+                    </a>
                     <div class="sb-sidenav-menu-heading">Core</div>
                     <a class="nav-link" href="./barang">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
