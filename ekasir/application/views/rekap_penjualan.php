@@ -6,12 +6,20 @@
                     Rekap Penjualan
                 </div>
                 <div class="card-body">
-                    <input class="form-control mb-3" placeholder="Bulan" list="namaBulan" id="nama_bulan" name="nama_barang">
-                    <datalist id="namaBulan">
-                        <option value="Bulan"></option>
-                    </datalist>
+                    <form action="" method="post">
+                        <div class="row mb-3">
+                            <div class="col-5">
+                                <input type="date" name="tanggal_awal" id="tanggal_awal" class="form-control">
+                            </div>
+                            <div class="col-5">
+                                <input type="date" name="tanggal_akhir" id="tanggal_akhir" class="form-control">
+                            </div>
+                            <div class="col-2">
+                                <button type="submit" class="btn btn-primary" id="tampil">Filter</button></div>
+                        </div>
+                    </form>
                     <div class="table-responsive">
-                        <table class="table table-bordered" width="100%" cellspacing="0">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -21,38 +29,22 @@
                                     <th>Grand Total</th>
                                     <th>Uang yang Dibayarkan</th>
                                     <th>Kembalian</th>
-                                    <th colspan="2">Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-body">
-                                                <h5>Apakah Anda Yakin akan Menghapus Data ini?</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                </button>
-                                                <form action="<?= base_url('Barang/delete') ?>" method="post">
-                                                    <input type="hidden" name="kode" value="<?= $a->kode_barang; ?>">
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                <button type="submit" class="btn btn-danger" id="submit">Hapus</button>
-                                            </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php foreach ($laporan as $index => $laporans) { ?>
+                                    <tr>
+                                        <td><?= $index + 1; ?></td>
+                                        <td><?= $laporans->tanggal_penjualan; ?></td>
+                                        <td><?= $laporans->nama_customer; ?></td>
+                                        <td><?= $laporans->alamat; ?></td>
+                                        <td><?= $laporans->total; ?></td>
+                                        <td><?= $laporans->bayar; ?></td>
+                                        <td><?= $laporans->kembali; ?></td>
+                                        <td><a href="javascript:;" data-id="<?= $laporans->kode_penjualan; ?>" id="detail"><i class="fas fa-eye"></i></a></td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -72,63 +64,54 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="post">
-                        <div class="form-group">
-                            <input type="hidden" name="kode" id="kode">
-                            <label for="nama">Nama Barang</label>
-                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan Nama Barang">
-                        </div>
-                        <div class="form-group">
-                            <label for="stok">Stok</label>
-                            <input type="text" name="stok" id="stok" class="form-control" placeholder="Masukkan Stok">
-                        </div>
-                        <div class="form-group">
-                            <label for="harga">Harga</label>
-                            <input type="text" name="harga" id="harga" class="form-control" placeholder="Masukkan Nama Kategori">
-                        </div>
+                    <div class="table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Barang</th>
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Harga</th>
+                                    <th scope="col">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tampildetail">
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary" id="submit">s</button>
                 </div>
-                </form>
+
             </div>
         </div>
     </div>
 
     <script>
         $(document).ready(function() {
-            $('#tambah').click(function() {
-                $('form').attr('action', '<?= base_url('Barang/add') ?>');
-                $('#modal-title').empty();
-                $('#modal-title').append('Tambah Barang');
-                $('#modal').modal('show');
-                $('#nama').val('');
-                $('#stok').val('');
-                $('#harga').val('');
-                $('#submit').text('Tambah Barang');
-            });
-            $('tbody tr').on('click', '#edit', function() {
-                $('form').attr('action', '<?= base_url('Barang/update') ?>');
+            $('tbody ').on('click', '#detail', function() {
                 $('#modal').modal('show');
                 $('#modal-title').empty();
                 $('#modal-title').append('Edit Barang');
-                $('#submit').empty();
-                $('#submit').append('Edit');
                 var id = $(this).data('id');
+                $("#tampildetail").empty();
                 console.log(id);
                 $.ajax({
-                    url: "<?= base_url('Barang') ?>/getbarang",
+                    url: "<?= base_url('Laporan') ?>/detail",
                     dataType: "JSON",
                     data: {
                         id: id
                     },
                     success: function(data) {
                         console.log(data);
-                        $('#kode').val(data[0]['kode_barang']);
-                        $('#nama').val(data[0]['nama_barang']);
-                        $('#stok').val(data[0]['stok']);
-                        $('#harga').val(data[0]['harga']);
+                        var no = 1;
+                        for (i = 0; i < data.length; i++) {
+                            $("#tampildetail").append('<tr><td>' + no + '</td><td>' + data[i]['nama_barang'] + '</td><td>' + data[i]['jumlah'] + '</td><td>' + data[i]['harga'] + '</td><td>' + data[i]['jumlah'] * data[i]['harga'] + '</td></tr>');
+                            no++;
+                        }
                     }
                 });
             })
