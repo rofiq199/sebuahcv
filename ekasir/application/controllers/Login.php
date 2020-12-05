@@ -7,9 +7,6 @@ class Login extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_login');
-        if ($this->session->userdata('logged_in') != true) {
-            redirect(base_url('Kasir'));
-        }
     }
 
     public function index()
