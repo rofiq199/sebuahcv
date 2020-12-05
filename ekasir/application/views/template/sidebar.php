@@ -29,20 +29,20 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Transaksi</div>
-                    <a class="nav-link" href="./kasir">
+                    <a class="nav-link" href="<?= base_url() ?>Kasir">
                         <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
                         Kasir
                     </a>
-                    <a class="nav-link" href="./StockIn">
+                    <a class="nav-link" href="<?= base_url() ?>StockIn">
                         <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
                         Stock In
                     </a>
                     <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="./barang">
+                    <a class="nav-link" href="<?= base_url() ?>Barang">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Barang
                     </a>
-                    <a class="nav-link" href="./laporan">
+                    <a class="nav-link" href="<?= base_url() ?>Laporan">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Laporan Transaksi
                     </a>

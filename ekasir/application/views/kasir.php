@@ -7,7 +7,7 @@
                     Kasir 16 Jaya Furniture
                 </div>
                 <div class="card-body">
-                    <form action="./Kasir/simpan" method="post">
+                    <form action="<?= base_url() ?>Kasir/simpan" method="post">
                         <div class="row">
                             <div class="col-md-3">
                                 <input class="form-control" required name="nama_customer" type="text" placeholder="Nama Pembeli" value="" aria-describedby="basic-addon2" />
@@ -43,10 +43,10 @@
                                 <input class="form-control" name="harga" id="harga" type="text" readonly placeholder="harga barang satuan" aria-describedby="basic-addon2" />
                             </div>
                             <div class="col-md-2">
-                                <input class="form-control" name="jumlah" type="text" placeholder="Qty" id="qty" aria-describedby="basic-addon2" />
+                                <input class="form-control" name="jumlah" type="number" placeholder="Qty" id="qty" aria-describedby="basic-addon2" />
                             </div>
                             <div class="col-md-1">
-                                <button type="button" class="btn btn-success" id="addcart">
+                                <button type="button" disabled class="btn btn-success" id="addcart">
                                     <div class="fas fa-check"></div>
                                 </button>
                             </div>
@@ -78,7 +78,7 @@
                                 <input type="text" class="form-control" required name="kembali" id="kembali" readonly placeholder="Kembali">
                             </div>
                             <div class="col-12 pt-2 pr-2">
-                                <button type="submit" class="form-control btn btn-primary">Cetak</button>
+                                <button type="submit" disabled id="cetak" class="form-control btn btn-primary">Cetak</button>
                             </div>
                         </div>
 
@@ -90,6 +90,9 @@
     <script>
         $(document).ready(function() {
             $('#cart').load("<?= base_url('Kasir/load_cart'); ?>");
+            $.get("<?= base_url('Kasir/total'); ?>", function(data) {
+                $('#total').val(data);
+            });
             $("#nama_barang").change(function() {
                 $("#harga").empty();
                 $("#kode_barang").empty();
@@ -105,6 +108,14 @@
                         console.log(data);
                         $("#harga").val(data[0]["harga"]);
                         $("#kode_barang").val(data[0]["kode_barang"]);
+                        $("#qty").keyup(function() {
+                            console.log($(this).val());
+                            if ($(this).val() <= parseInt(data[0]["stok"]) && $(this).val() > 0) {
+                                $("#addcart").prop('disabled', false);
+                            } else {
+                                $("#addcart").prop('disabled', true);
+                            }
+                        })
                     }
                 })
             })
@@ -153,12 +164,24 @@
                     },
                 });
                 $('#cart').load("<?= base_url('Kasir/load_cart'); ?>");
+                $.get("<?= base_url('Kasir/total'); ?>", function(data) {
+                    $('#total').val(data);
+                });
             });
             $("#bayar").keyup(function() {
                 var total = $('#total').val();
                 var bayar = $(this).val();
                 var kembali = parseInt(bayar) - parseInt(total);
+                cek(kembali);
                 $("#kembali").val(kembali);
             });
+
+            function cek(jumlah) {
+                if (jumlah >= 1) {
+                    $("#cetak").prop('disabled', false);
+                } else {
+                    $("#cetak").prop('disabled', true);
+                }
+            }
         });
     </script>

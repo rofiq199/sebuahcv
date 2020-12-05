@@ -46,15 +46,15 @@
                         <div class="form-group">
                             <input type="hidden" name="kode" id="kode">
                             <label for="nama">Nama Barang</label>
-                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan Nama Barang">
+                            <input type="text" name="nama" id="nama" class="form-control" required placeholder="Masukkan Nama Barang">
                         </div>
                         <div class="form-group">
                             <label for="stok">Stok</label>
-                            <input type="text" name="stok" id="stok" class="form-control" placeholder="Masukkan Stok">
+                            <input type="number" min="1" name="stok" id="stok" class="form-control" placeholder="Masukkan Stok">
                         </div>
                         <div class="form-group">
                             <label for="harga">Harga</label>
-                            <input type="text" name="harga" id="harga" class="form-control" placeholder="Masukkan Nama Kategori">
+                            <input type="number" name="harga" min="1" required id="harga" class="form-control" placeholder="Masukkan Nama Kategori">
                         </div>
                 </div>
                 <div class="modal-footer">
