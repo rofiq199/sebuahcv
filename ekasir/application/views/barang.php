@@ -50,11 +50,11 @@
                         </div>
                         <div class="form-group">
                             <label for="stok">Stok</label>
-                            <input type="number" min="1" name="stok" id="stok" class="form-control" placeholder="Masukkan Stok">
+                            <input type="text" onkeypress="return hanyaAngka(event)" required name="stok" id="stok" class="form-control" placeholder="Masukkan Stok">
                         </div>
                         <div class="form-group">
                             <label for="harga">Harga</label>
-                            <input type="number" name="harga" min="1" required id="harga" class="form-control" placeholder="Masukkan Nama Kategori">
+                            <input type="text" name="harga" onkeypress="return hanyaAngka(event)" required id="harga" class="form-control" placeholder="Masukkan Harga Barang">
                         </div>
                 </div>
                 <div class="modal-footer">

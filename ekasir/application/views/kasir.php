@@ -43,7 +43,7 @@
                                 <input class="form-control" name="harga" id="harga" type="text" readonly placeholder="harga barang satuan" aria-describedby="basic-addon2" />
                             </div>
                             <div class="col-md-2">
-                                <input class="form-control" name="jumlah" type="number" placeholder="Qty" id="qty" aria-describedby="basic-addon2" />
+                                <input class="form-control" name="jumlah" type="text" onkeypress="return hanyaAngka(event)" placeholder="Qty" id="qty" aria-describedby="basic-addon2" />
                             </div>
                             <div class="col-md-1">
                                 <button type="button" disabled class="btn btn-success" id="addcart">
@@ -72,7 +72,7 @@
                                 <input type="text" class="form-control" required name="total" id="total" readonly placeholder="Total">
                             </div>
                             <div class="col-12 pt-2 pr-2">
-                                <input type="text" class="form-control" required name="bayar" id="bayar" placeholder="Bayar">
+                                <input type="text" class="form-control" required onkeypress="return hanyaAngka(event)" name="bayar" id="bayar" placeholder="Bayar">
                             </div>
                             <div class="col-12 pt-2 pr-2">
                                 <input type="text" class="form-control" required name="kembali" id="kembali" readonly placeholder="Kembali">
