@@ -29,7 +29,7 @@
                                 </select> -->
                             </div>
                             <div class="col-md-2">
-                                <input class="form-control" name="jumlah" type="text" placeholder="Qty" id="qty" aria-describedby="basic-addon2" />
+                                <input class="form-control" name="jumlah" type="text" min="1" onkeypress="return hanyaAngka(event)" placeholder="Qty" id="qty" aria-describedby="basic-addon2" />
                             </div>
                             <div class="col-md-1">
                                 <button type="button" class="btn btn-success" id="addcart">
