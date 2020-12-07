@@ -66,6 +66,21 @@ class Barang extends CI_Controller
             'harga' => $harga
         ];
         $proses = $this->M_user->insertdata('barang', $data);
+        if ($proses) {
+            $this->session->set_flashdata(
+                'msg',
+                ' <div class="alert alert-success" role="alert">
+            Berhasil Menambahkan Barang
+        </div>'
+            );
+        } elseif ($proses == false) {
+            $this->session->set_flashdata(
+                'msg',
+                ' <div class="alert alert-danger" role="alert">
+            Nama Barang telah ada pada daftar
+        </div>'
+            );
+        }
         redirect(base_url('Barang'));
     }
     function update()
