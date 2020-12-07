@@ -50,7 +50,7 @@
                         </div>
                         <div class="form-group">
                             <label for="stok">Stok</label>
-                            <input type="text" onkeypress="return hanyaAngka(event)" min="1" required name="stok" id="stok" class="form-control" placeholder="Masukkan Stok">
+                            <input type="number" min="1" required name="stok" id="stok" class="form-control" placeholder="Masukkan Stok">
                         </div>
                         <div class="form-group">
                             <label for="harga">Harga</label>
