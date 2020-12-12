@@ -72,6 +72,9 @@
                                 <input type="text" class="form-control" required name="total" id="total" readonly placeholder="Total">
                             </div>
                             <div class="col-12 pt-2 pr-2">
+                                <input type="text" class="form-control" required onkeypress="return hanyaAngka(event)" name="diskon" id="diskon" placeholder="Diskon">
+                            </div>
+                            <div class="col-12 pt-2 pr-2">
                                 <input type="text" class="form-control" required onkeypress="return hanyaAngka(event)" name="bayar" id="bayar" placeholder="Bayar">
                             </div>
                             <div class="col-12 pt-2 pr-2">
@@ -168,6 +171,16 @@
                 $.get("<?= base_url('Kasir/total'); ?>", function(data) {
                     $('#total').val(data);
                 });
+            });
+            $("#diskon").blur(function() {
+                var total = $('#total').val();
+                var bayar = $(this).val();
+                var kembali = parseInt(total) - parseInt(bayar);
+                cek(kembali);
+                console.log(bayar);
+                if (bayar != "") {
+                    $("#total").val(kembali);
+                }
             });
             $("#bayar").keyup(function() {
                 var total = $('#total').val();
