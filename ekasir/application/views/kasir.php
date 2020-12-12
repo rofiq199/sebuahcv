@@ -89,6 +89,7 @@
     </main>
     <script>
         $(document).ready(function() {
+
             $('#cart').load("<?= base_url('Kasir/load_cart'); ?>");
             $.get("<?= base_url('Kasir/total'); ?>", function(data) {
                 $('#total').val(data);
@@ -177,7 +178,7 @@
             });
 
             function cek(jumlah) {
-                if (jumlah >= 1) {
+                if (jumlah >= 0) {
                     $("#cetak").prop('disabled', false);
                 } else {
                     $("#cetak").prop('disabled', true);

@@ -16,6 +16,7 @@ class Nota extends CI_Controller
     }
     function cetak($id)
     {
+        $data['toko'] = $this->M_user->getwhere('toko', ['id' => '1']);
         $data['penjualan'] = $this->M_user->getwhere('penjualan', ['kode_penjualan' => $id]);
         $data['detail'] = $this->M_user->getjoinfilter('detail_penjualan', 'barang', 'detail_penjualan.kode_barang=barang.kode_barang', ['kode_penjualan' => $id]);
         $this->load->view('nota', $data);

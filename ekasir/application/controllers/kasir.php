@@ -117,11 +117,11 @@ class Kasir extends CI_Controller
             </td>
              <td>' . $a["name"] . '
              </td>
-             <td>' . $a['price'] . '
+             <td> Rp. ' . number_format($a['price'], 0, ',', '.') . '
              </td>
              <td>' . $a["qty"] . '
              </td>
-             <td>' . $a['subtotal'] . '
+             <td>Rp. ' . number_format($a['subtotal'], 0, ',', '.') . '
              </td>
              <td><a href="javascript:;" id="hapus" data-id=' . $a['rowid'] . '><i class="fas fa-trash"></i></a>
              </td>
