@@ -13,14 +13,25 @@ thead{
 .table {
     border:  solid #000000;
   }
-  .table-bordered > thead > tr > th,
-  .table-bordered > tbody > tr > th,
-  .table-bordered > tfoot > tr > th,
-  .table-bordered > thead > tr > td,
-  .table-bordered > tbody > tr > td,
-  .table-bordered > tfoot > tr > td {
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td {
      border:  solid #000000;
-  }
+}
+
+@media print{
+    .table {
+        border:  solid #000000;
+      }
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td {
+         border:  solid #000000 !important
+         ;
+    }
+}
 img{
     max-width: 3.81cm;
     max-height: 5.59cm;
